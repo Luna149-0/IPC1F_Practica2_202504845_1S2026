@@ -4,6 +4,9 @@
  */
 package practica2_Views;
 
+import javax.swing.JOptionPane;
+import practica2_Controller.PersonajeController;
+
 /**
  *
  * @author ixche
@@ -145,10 +148,16 @@ public class vista_MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_salirActionPerformed
 
     private void btn_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_InicioActionPerformed
-        VistaInicio vInicio = new VistaInicio();
-        vInicio.setVisible(true);
-        vInicio.setLocationRelativeTo(null);
-        this.dispose();
+        if (PersonajeController.contadorPersonajes == 0) {
+        JOptionPane.showMessageDialog(this, "Debe crear un personaje primero");
+        return; 
+    }
+
+    VistaElegirPersonaje v = new VistaElegirPersonaje();
+    v.setVisible(true);
+    v.setLocationRelativeTo(null);
+    this.dispose();
+
     }//GEN-LAST:event_btn_InicioActionPerformed
 
 
