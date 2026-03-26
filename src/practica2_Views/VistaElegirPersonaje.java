@@ -13,12 +13,15 @@ import practica2_Model.PersonajeModel;
  * @author ixche
  */
 public class VistaElegirPersonaje extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VistaElegirPersonaje.class.getName());
 
     /**
      * Creates new form VistaElegirPersonaje
      */
+    
+    
+
     public VistaElegirPersonaje() {
         initComponents();
         llenarCombo();
@@ -128,10 +131,16 @@ public class VistaElegirPersonaje extends javax.swing.JFrame {
     PersonajeModel jugador = PersonajeController.personajes[index];
 
     // 3. Oponente aleatorio (AQUÍ VA TU CÓDIGO)
-    int random;
+    int random = 0;
+
+if (PersonajeController.contadorPersonajes > 1) {
     do {
         random = (int)(Math.random() * PersonajeController.contadorPersonajes);
     } while (random == index);
+} else {
+    JOptionPane.showMessageDialog(this, "Se necesita al menos 2 personajes");
+    return;
+}
 
     PersonajeModel oponente = PersonajeController.personajes[random];
 
@@ -139,7 +148,6 @@ public class VistaElegirPersonaje extends javax.swing.JFrame {
     VistaCarrera carrera = new VistaCarrera(jugador, oponente);
     carrera.setVisible(true);
     carrera.setLocationRelativeTo(null);
-
     this.dispose();
 
     }//GEN-LAST:event_btnJugarActionPerformed

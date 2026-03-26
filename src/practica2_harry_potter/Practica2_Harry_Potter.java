@@ -11,7 +11,6 @@ public class Practica2_Harry_Potter {
     public static void main(String[] args) {
         
         PersonajeController control=new PersonajeController();
-        control.agregarPersonajesQuemados();
         
           vista_MenuPrincipal vista= new vista_MenuPrincipal();
         vista.setVisible(true);

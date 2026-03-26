@@ -4,6 +4,7 @@
  */
 package practica2_Views;
 
+import javax.swing.JOptionPane;
 import practica2_Model.PersonajeModel;
 
 /**
@@ -22,6 +23,10 @@ public VistaCarrera(PersonajeModel jugador, PersonajeModel oponente) {
     initComponents();
     this.jugador = jugador;
     this.oponente = oponente;
+    JOptionPane.showMessageDialog(this, 
+    "Jugador: " + jugador.getNombre() + 
+    "\nOponente: " + oponente.getNombre()
+     );
 
 }
 
@@ -35,28 +40,63 @@ public VistaCarrera(PersonajeModel jugador, PersonajeModel oponente) {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        JugadorRandom = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        btnJugar = new javax.swing.JButton();
+        btnReg = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(197, 194, 194));
+
+        JugadorRandom.setBackground(new java.awt.Color(255, 255, 255));
+        JugadorRandom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mago2.png"))); // NOI18N
+        JugadorRandom.setText("jLabel1");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HrryF.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
+        btnJugar.setText("Jugar");
+
+        btnReg.setText("Regresar");
+        btnReg.addActionListener(this::btnRegActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 825, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(JugadorRandom, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(396, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnReg)
+                    .addComponent(btnJugar))
+                .addGap(369, 369, 369))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(40, 40, 40)
+                .addComponent(JugadorRandom)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnJugar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReg)
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -66,11 +106,23 @@ public VistaCarrera(PersonajeModel jugador, PersonajeModel oponente) {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegActionPerformed
+        
+    vista_MenuPrincipal menu = new vista_MenuPrincipal();
+    menu.setVisible(true);
+    menu.setLocationRelativeTo(null);
+    this.dispose();
+    }//GEN-LAST:event_btnRegActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JugadorRandom;
+    private javax.swing.JButton btnJugar;
+    private javax.swing.JButton btnReg;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
