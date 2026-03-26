@@ -132,7 +132,12 @@ public class vista_MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_PersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PersonajeActionPerformed
-        // TODO add your handling code here:
+        VistaCrearPersonaje vista = new VistaCrearPersonaje();
+        vista.setVisible(true);
+        vista.setLocationRelativeTo(null);
+
+         //cerrar menú
+          this.dispose();
     }//GEN-LAST:event_btn_PersonajeActionPerformed
 
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
