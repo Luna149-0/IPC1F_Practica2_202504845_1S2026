@@ -5,6 +5,7 @@
 package practica2_Views;
 
 import javax.swing.JOptionPane;
+import static practica2_Controller.PersonajeController.personajes;
 import practica2_Model.PersonajeModel;
 
 /**
@@ -40,8 +41,8 @@ public VistaCarrera(PersonajeModel jugador, PersonajeModel oponente) {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        JugadorRandom = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblMagoRandom = new javax.swing.JLabel();
+        lblMago1 = new javax.swing.JLabel();
         btnJugar = new javax.swing.JButton();
         btnReg = new javax.swing.JButton();
 
@@ -49,14 +50,15 @@ public VistaCarrera(PersonajeModel jugador, PersonajeModel oponente) {
 
         jPanel1.setBackground(new java.awt.Color(197, 194, 194));
 
-        JugadorRandom.setBackground(new java.awt.Color(255, 255, 255));
-        JugadorRandom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mago2.png"))); // NOI18N
-        JugadorRandom.setText("jLabel1");
+        lblMagoRandom.setBackground(new java.awt.Color(255, 255, 255));
+        lblMagoRandom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Mago2.png"))); // NOI18N
+        lblMagoRandom.setText("jLabel1");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HrryF.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        lblMago1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HrryF.png"))); // NOI18N
+        lblMago1.setText("jLabel1");
 
-        btnJugar.setText("Jugar");
+        btnJugar.setText("Iniciar");
+        btnJugar.addActionListener(this::btnJugarActionPerformed);
 
         btnReg.setText("Regresar");
         btnReg.addActionListener(this::btnRegActionPerformed);
@@ -68,8 +70,8 @@ public VistaCarrera(PersonajeModel jugador, PersonajeModel oponente) {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(JugadorRandom, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMago1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(lblMagoRandom, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(396, Short.MAX_VALUE)
@@ -82,9 +84,9 @@ public VistaCarrera(PersonajeModel jugador, PersonajeModel oponente) {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblMago1)
                 .addGap(40, 40, 40)
-                .addComponent(JugadorRandom)
+                .addComponent(lblMagoRandom)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnJugar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -114,15 +116,54 @@ public VistaCarrera(PersonajeModel jugador, PersonajeModel oponente) {
     this.dispose();
     }//GEN-LAST:event_btnRegActionPerformed
 
+    private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
+        Thread hilo=new Thread(()->{ 
+        for (int x = lblMago1.getX(); x <= this.getWidth()-100; x += 10) {
+                final int nuevaX = x;
+
+                javax.swing.SwingUtilities.invokeLater(() -> {
+                    lblMago1.setLocation(nuevaX, lblMago1.getY());
+                });
+
+                try {
+                    Thread.sleep(jugador.getEscoba().getDormirSegundos()*100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+         }
+        });
+        
+        Thread hilo2 = new Thread(()-> {
+            for(int x = lblMagoRandom.getX(); x <= this.getWidth()-100 ; x+=10){
+                final int nuevaX = x;
+                
+                javax.swing.SwingUtilities.invokeLater(()->{
+                    lblMagoRandom.setLocation(nuevaX, lblMagoRandom.getY());
+                });
+                
+                try{
+                    Thread.sleep(oponente.getEscoba().getDormirSegundos()*100);
+                }catch(InterruptedException e){
+                    e.printStackTrace();
+                }
+                
+            }
+        
+        });
+
+        hilo.start();
+        hilo2.start();
+    }//GEN-LAST:event_btnJugarActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JugadorRandom;
     private javax.swing.JButton btnJugar;
     private javax.swing.JButton btnReg;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblMago1;
+    private javax.swing.JLabel lblMagoRandom;
     // End of variables declaration//GEN-END:variables
 }
