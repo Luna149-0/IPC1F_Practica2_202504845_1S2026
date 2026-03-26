@@ -55,6 +55,7 @@ public class vista_MenuPrincipal extends javax.swing.JFrame {
         btn_Inicio.setBackground(new java.awt.Color(169, 193, 243));
         btn_Inicio.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
         btn_Inicio.setText("Iniciar juego");
+        btn_Inicio.addActionListener(this::btn_InicioActionPerformed);
 
         btn_Personaje.setBackground(new java.awt.Color(169, 193, 243));
         btn_Personaje.setFont(new java.awt.Font("Sylfaen", 2, 18)); // NOI18N
@@ -137,6 +138,13 @@ public class vista_MenuPrincipal extends javax.swing.JFrame {
     private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
      System.exit(0);
     }//GEN-LAST:event_btn_salirActionPerformed
+
+    private void btn_InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_InicioActionPerformed
+        VistaInicio vInicio = new VistaInicio();
+        vInicio.setVisible(true);
+        vInicio.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btn_InicioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
