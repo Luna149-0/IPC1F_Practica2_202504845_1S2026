@@ -12,7 +12,7 @@ public class Practica2_Harry_Potter {
         
         PersonajeController control=new PersonajeController();
         
-          vista_MenuPrincipal vista= new vista_MenuPrincipal();
+        vista_MenuPrincipal vista= new vista_MenuPrincipal();
         vista.setVisible(true);
         vista.setLocationRelativeTo(null);
 
